@@ -31,7 +31,7 @@ class: center, middle
 2. Basic ES6 (destructuring, arrow functions, object notation)
 3. React fundamentals (JSX, vdom)
 4. React Component
-5. State and Props
+5. State and Props (+propTypes)
 5. React Component lifecycle
 6. Data flow - backbone -> flux -> redux
 7. Example app (basic + more complex example with router)
@@ -39,6 +39,51 @@ class: center, middle
 ---
 
 # Introduction
+
+```js
+// pure component
+export default (props) => {
+    return <div>Hello { props.name }</div>;
+}
+
+// stateless component
+export default React.createClass({
+  render() {
+    return <div>Hello { this.props.name }</div>;
+  }
+});
+
+// stateful component
+export default React.createClass({
+  getInitialState() {
+    return { name: 'John' };
+  },
+  render() {
+    return <div>Hello { this.state.name }</div>;
+  }
+});
+
+// stateful component class
+export default class MyComponent extends React.Component {
+  constructor() {
+    this.state = { name: 'John' };
+  }
+  render() {
+    return <div>Hello { this.state.name }</div>;
+  }
+});
+
+// connected component (redux)
+export const MyComponent = React.createClass({ // named export for testing
+  render() {
+    return <div>Hello { this.props.name }</div>;
+  }
+});
+
+export default connect(({ employees }) => {
+  return { name: employees['john'].name };
+})(MyComponent);
+```
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
