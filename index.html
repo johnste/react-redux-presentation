@@ -38,9 +38,9 @@ class: center, middle
 
 ---
 
-# Introduction
+# React Component
 
-```js
+```jsx
 // pure component
 export default (props) => {
     return <div>Hello { props.name }</div>;
@@ -52,7 +52,13 @@ export default React.createClass({
     return <div>Hello { this.props.name }</div>;
   }
 });
+```
 
+---
+
+# React Component
+
+```jsx
 // stateful component
 export default React.createClass({
   getInitialState() {
@@ -72,7 +78,13 @@ export default class MyComponent extends React.Component {
     return <div>Hello { this.state.name }</div>;
   }
 });
+```
 
+---
+
+# React Component
+
+```jsx
 // connected component (redux)
 export const MyComponent = React.createClass({ // named export for testing
   render() {
