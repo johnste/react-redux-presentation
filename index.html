@@ -38,9 +38,74 @@ class: center, middle
 
 ---
 
+# ES6 - arrow function
+
+```js
+this.count = 0;
+var that = this;
+
+setInterval(function() {
+  that.count++;
+}, 1000);
+```
+
+```js
+this.count = 0;
+
+setInterval(() => {
+  this.count++;
+}, 1000);
+```
+
+---
+
+# ES6 - destructuring
+
+```js
+var point = getPoint();
+var x = point.x;
+var y = point.y;
+```
+
+```js
+const { x, y } = getPoint();
+```
+
+---
+
+# ES6 - default parameters
+
+```js
+function sayHello(opts) {
+  var name = opts.name || 'Jontus Doe';
+  return 'Hello ' + name;
+}
+```
+
+```js
+function sayHello(opts = { name: 'Johntus Doe' }) {
+  return `Hello ${name}`;
+}
+```
+
+---
+
+# ES6 - modules
+
+```js
+var React = require('react');
+var PropTypes = React.PropTypes;
+```
+
+```js
+import React, { PropTypes } from 'react';
+```
+
+---
+
 # React Component
 
-```jsx
+```js
 // pure component
 export default (props) => {
     return <div>Hello { props.name }</div>;
@@ -58,7 +123,7 @@ export default React.createClass({
 
 # React Component
 
-```jsx
+```js
 // stateful component
 export default React.createClass({
   getInitialState() {
@@ -84,7 +149,7 @@ export default class MyComponent extends React.Component {
 
 # React Component
 
-```jsx
+```js
 // connected component (redux)
 export const MyComponent = React.createClass({ // named export for testing
   render() {
