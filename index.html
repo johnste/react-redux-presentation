@@ -23,17 +23,37 @@ class: center, middle
 
 # React + redux
 
+Elevate XX april 2016
+
+---
+
+# whoarewe
+
+### John
+- thick as a brick
+- IQ 235
+
+### Pontus
+- Frontend/JavaScript developer
+- [@hontas](https://github.com/hontas) on github
+- Reacter since summer 2015
+
 ---
 
 # Agenda
 
-1. Basic ES6/ES2015
-2. React fundamentals (JSX, vdom)
+1. Basic ES6 (ES2015)
+2. React fundamentals
+  - View layer (vdom)
+  - JSX
   - React Component
+  - React Component lifecycle
   - State and Props (+propTypes)
   - React Component lifecycle
 3. Redux
+  - Backbone collection -> Flux -> Redux
 4. Example app (basic + more complex example with router)
+  - Babel
 
 ---
 
@@ -149,10 +169,21 @@ import React, { PropTypes } from 'react';
 
 ---
 
-# JSX
+# React fundamentals
+
+- *Ember* - full MVC
+- *Angular* - everything and a kitchen sink
+- *React* - only view layer
+
+What problems is it solving?
+
+[DOM manipulation comparison](https://www.youtube.com/watch?v=z5e7kWSHWTg)
+
+---
+
+# React fundamentals - JSX
 
 - superset of JS
-  - className, htmlFor, js-eval, single wrapping elemement
 
 ```jsx
 <form className="sign-in-form">
@@ -226,9 +257,14 @@ export default connect(({ employees }) => {
 
 # Link list
 
+- [slides](http://johnste.github.io/react-redux-presentation)
 - [learn ES6](http://babeljs.io/docs/learn-es2015/)
 - [React + Webpack cookbook](http://survivejs.com/webpack/introduction/)
 - [Redux documentation](http://redux.js.org/docs/introduction/index.html)
+- [Getting started with redux video series](https://egghead.io/series/getting-started-with-redux)
+
+### Further reading
+- [pokedex](http://www.pocketjavascript.com/blog/2015/11/23/introducing-pokedex-org)
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
