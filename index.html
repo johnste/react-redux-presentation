@@ -38,6 +38,22 @@ class: center, middle
 
 ---
 
+# ES6 - let/const
+> proudly presented in block scope
+
+```js
+for (let i = 0; i < 10; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 100);
+}
+
+const x = 5;
+x = 6 // ReferenceError
+```
+
+---
+
 # ES6 - arrow function
 
 ```js
@@ -59,31 +75,60 @@ setInterval(() => {
 
 ---
 
+# ES6 - object literals
+
+```js
+var url = 'http://...';
+var api = {
+  url: url,
+  putJSON: function () { ... }
+};
+```
+
+```js
+const salt = 'johntus_';
+const prop = 'lastName';
+const url = 'http://...';
+const api = {
+  url,
+  putJson() { ... },
+  [salt + prop]: 'Sterlundin'
+};
+```
+
+---
+
 # ES6 - destructuring
 
 ```js
 var point = getPoint();
 var x = point.x;
 var y = point.y;
+
+var point2 = getPointAsArray();
+var x2 = point2[0];
+var y2 = point2[1];
 ```
 
 ```js
 const { x, y } = getPoint();
+const [x2, y2] = getPointAsArray();
 ```
 
 ---
 
-# ES6 - default parameters
+# ES6 - default/rest parameters
 
 ```js
 function sayHello(opts) {
   var name = opts.name || 'Jontus Doe';
+  var rest = [].slice.call(arguments, 1);
   return 'Hello ' + name;
 }
 ```
 
 ```js
-function sayHello(opts = { name: 'Johntus Doe' }) {
+function sayHello(opts = { name: 'Johntus Doe' }, ...rest) {
   return `Hello ${name}`;
 }
 ```
