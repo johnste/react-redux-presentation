@@ -28,7 +28,7 @@ class: center, middle
 # Agenda
 
 1. What is React
-2. Basic ES6 (destructuring, arrow functions, object notation)
+2. Basic ES6/ES2015 (destructuring, arrow functions, object notation)
 3. React fundamentals (JSX, vdom)
 4. React Component
 5. State and Props (+propTypes)
@@ -39,7 +39,7 @@ class: center, middle
 ---
 
 # ES6 - let/const
-> proudly presented in block scope
+*proudly presented in block scope*
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -49,7 +49,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 const x = 5;
-x = 6 // ReferenceError
+x = 6 // TypeError
 ```
 
 ---
@@ -86,13 +86,10 @@ var api = {
 ```
 
 ```js
-const salt = 'johntus_';
-const prop = 'lastName';
 const url = 'http://...';
 const api = {
   url,
-  putJson() { ... },
-  [salt + prop]: 'Sterlundin'
+  putJson() { ... }
 };
 ```
 
@@ -104,15 +101,10 @@ const api = {
 var point = getPoint();
 var x = point.x;
 var y = point.y;
-
-var point2 = getPointAsArray();
-var x2 = point2[0];
-var y2 = point2[1];
 ```
 
 ```js
 const { x, y } = getPoint();
-const [x2, y2] = getPointAsArray();
 ```
 
 ---
@@ -120,15 +112,15 @@ const [x2, y2] = getPointAsArray();
 # ES6 - default/rest parameters
 
 ```js
-function sayHello(opts) {
-  var name = opts.name || 'Jontus Doe';
+function sayHello(name) {
+  name = name || 'Jontus Doe';
   var rest = [].slice.call(arguments, 1);
   return 'Hello ' + name;
 }
 ```
 
 ```js
-function sayHello(opts = { name: 'Johntus Doe' }, ...rest) {
+function sayHello(name = 'Johntus Doe', ...rest) {
   return `Hello ${name}`;
 }
 ```
@@ -138,14 +130,38 @@ function sayHello(opts = { name: 'Johntus Doe' }, ...rest) {
 # ES6 - modules
 
 ```js
+// exporting
+module.exports = function React() {};
+module.exports.PropTypes = {};
+
+// importing
 var React = require('react');
 var PropTypes = React.PropTypes;
 ```
 
 ```js
+// exporting
+export default function React() (};
+export const PropTypes = {};
+
+// importing
 import React, { PropTypes } from 'react';
 ```
 
+---
+
+# JSX
+
+- superset of JS
+  - className, htmlFor, js-eval, single wrapping elemement
+
+```jsx
+<form className="sign-in-form">
+  <label htmlFor="email">Email</label>
+  <input type="email" id="email" />
+  <button onClick={ this.onHandleClick }>Click me!</button>
+</form>
+```
 ---
 
 # React Component
@@ -206,6 +222,14 @@ export default connect(({ employees }) => {
   return { name: employees['john'].name };
 })(MyComponent);
 ```
+
+---
+
+# Link list
+
+- [learn ES6](http://babeljs.io/docs/learn-es2015/)
+- [React + Webpack cookbook](http://survivejs.com/webpack/introduction/)
+- [Redux documentation](http://redux.js.org/docs/introduction/index.html)
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
