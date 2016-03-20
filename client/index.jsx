@@ -9,10 +9,11 @@ const store = configureStore({});
 const rootEl = document.getElementById('root');
 
 let render = () => {
-  const App = require('./containers/App.jsx').default;
+  const Router = require('./containers/Router.jsx').default;
+
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <Router />
     </Provider>,
     rootEl
   );
@@ -35,7 +36,7 @@ if (module.hot) {
       renderError(error);
     }
   };
-  module.hot.accept('./containers/App.jsx', () => {
+  module.hot.accept('./containers/Router.jsx', () => {
     setTimeout(render);
   });
 }
