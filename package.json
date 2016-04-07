@@ -27,7 +27,6 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
-    "redbox-react": "^1.2.2",
     "redux": "^3.3.1",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
