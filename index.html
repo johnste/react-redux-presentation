@@ -75,11 +75,10 @@ Elevate 14 april 2016
 *proudly presented in block scope*
 
 ```js
-for (let i = 0; i < 10; i++) {
-  setTimeout(function() {
-    console.log(i);
-  }, 100);
+if (true) {
+  let a = 5;
 }
+a += 4; // ReferenceError: a is not defined
 
 const x = 5;
 x = 6; // TypeError
@@ -108,43 +107,26 @@ setInterval(() => {
 
 ---
 
-# ES6 - Template literals
-
-```js
-// Multiline strings
-var kind = "multiline"
-var docs = `
-  Hey, this is a
-  ${kind} string
-`
-```
-
-```js
-// Tagged templates TODO
-function tag(strings, ...values) {
-
-}
-const a = 51
-const b = 15
-tag`${a} is not ${b}`
-```
----
-
 # ES6 - object literals
 
 ```js
 var url = 'http://...';
+var key = 'a key';
+
 var api = {
   url: url,
-  putJSON: function () { ... }
+  putJSON: function () { ... },
 };
+
+api[key] = 'a value';
 ```
 
 ```js
 const url = 'http://...';
 const api = {
   url,
-  putJson() { ... }
+  putJson() { ... },
+  [key]: 'a value'
 };
 ```
 
@@ -162,7 +144,19 @@ var y = point.y;
 const { x, y } = getPoint();
 ```
 
+
 ---
+
+# ES6 - Template literals
+
+```js
+// Multiline strings
+const kind = "multiline"
+const docs = `Hey, this is a ${kind} string`
+```
+
+---
+
 
 # ES6 - default/rest parameters
 
