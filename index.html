@@ -58,8 +58,6 @@ Elevate 14 april 2016
 ### - Basic ES6 (ES2015)
 ### - React fundamentals
 ### - Redux
-  - Backbone collection -> Flux -> Redux
-  - Store, Actions (middleware), Reducers, connect
 ### - Example app
   - errors in window
   - hmr
@@ -455,7 +453,7 @@ Managing data, the M of MVC
 
 Describe change intent
 
-```jsx
+```js
 export function getCats(catType) {
   return {
     type: 'GET_CATS',
@@ -469,7 +467,7 @@ export function getCats(catType) {
 
 Mutation by pure function
 
-```jsx
+```js
 export function catReducer(state = {}, action) {
   switch(action.type) {
     case 'GET_CATS':
@@ -488,7 +486,7 @@ export function catReducer(state = {}, action) {
 
 # Redux - Store
 
-```jsx
+```js
 import { createStore, combineReducers } from 'redux';
 import { catReducer } from '../reducers';
 
@@ -525,6 +523,26 @@ render(
   document.getElementById('container')
 );
 ```
+---
+
+# Redux - Connected components
+
+Deeply nested state
+
+```jsx
+<Application >
+  <Header />
+  <main>
+    <Article />
+    <aside>
+      <ArticlesList />
+    </aside>
+  </main>
+  <Footer />
+</Application>
+```
+
+passthrough or...?
 
 ---
 
