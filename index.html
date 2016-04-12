@@ -351,6 +351,8 @@ Redux - Predictable state container
 
 # Redux - Action creators
 
+* describe change intent
+
 ```jsx
 export function getCats(catType) {
   return {
@@ -363,8 +365,9 @@ export function getCats(catType) {
 
 # Redux - Reducers
 
-```jsx
+* Mutation by pure function
 
+```jsx
 export function catReducer(state = {}, action) {
   switch(action.type) {
     case 'GET_CATS':
