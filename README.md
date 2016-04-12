@@ -14,10 +14,10 @@ Open [http://localhost:3000/](http://localhost:3000/)
 ## ToDo
 
 * ta bort underrubrikerna på agendan
-* förenkla let/const exemplet
-* förenkla template literals - flytta senare
-* object literal shorthand
-  - add computed property example
+* ~~förenkla let/const exemplet~~
+* ~~förenkla template literals - flytta senare~~
+* ~~object literal shorthand~~
+  ~~- add computed property example~~
 * destruct -> example destruct arguments
 * add rest spread operator
 * default/rest - add example
