@@ -36,9 +36,7 @@ Open [http://localhost:3000/](http://localhost:3000/)
 
 * ~~Flux - bilden~~
 * ~~Store hell! Spagettimonster!~~
-* Gömt state -> lokalt state
-* Globalt state => komponenterna är en representation
-* saker du inte förväntar dig är kvar efter en page refresh
+* ~~state vs props~~
 * Gör om den för att visa redux
 
 * kodexempel för redux -beståndsdelar

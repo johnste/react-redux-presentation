@@ -55,15 +55,12 @@ Elevate 14 april 2016
 
 # Agenda
 
-1. Basic ES6 (ES2015)
-2. React fundamentals
-  - View layer (vdom)
-  - State and Props (+propTypes)
-  - React Component lifecycle
-3. Redux
+### - Basic ES6 (ES2015)
+### - React fundamentals
+### - Redux
   - Backbone collection -> Flux -> Redux
   - Store, Actions (middleware), Reducers, connect
-4. Example app
+### - Example app
   - errors in window
   - hmr
   - propType validation
@@ -333,6 +330,29 @@ export default class MyComponent extends React.Component {
   }
 });
 ```
+---
+
+# React fundamentals - State vs Props
+
+- Immutability
+- Stateless/Pure components
+- Present data
+- Always rerender!
+
+### Always be using props!
+
+except...
+
+```jsx
+export default InputField = React.createClass({
+  onChange(evt) {
+    this.setState({ value: evt.target.value });
+  },
+  render() {
+    return <input onChange={ this.onChange } value={ this.state.value } />
+  }
+});
+```
 
 ---
 
@@ -421,13 +441,19 @@ Managing data, the M of MVC
 
 ![redux](https://docs.google.com/drawings/d/1zn2arct1NehY0r2N5x5lnZ00-UWHLv0YrUPPSXBap-4/pub?w=959&h=357)
 
-- pure functional mutations
+---
+
+# Redux - parts
+
+### - Action creators
+### - Reducers
+### - Store
 
 ---
 
 # Redux - Action creators
 
-* describe change intent
+Describe change intent
 
 ```jsx
 export function getCats(catType) {
@@ -441,7 +467,7 @@ export function getCats(catType) {
 
 # Redux - Reducers
 
-* Mutation by pure function
+Mutation by pure function
 
 ```jsx
 export function catReducer(state = {}, action) {
