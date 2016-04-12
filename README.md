@@ -26,7 +26,7 @@ Open [http://localhost:3000/](http://localhost:3000/)
 
 * elaborate on vdom + diffing
 
-* react jsx - add render function
+* ~~react jsx - add render function~~
 * exempel på attribut, true, false, string
 * alternativ till jsx
 * ~~jsx - babel - es6~~
