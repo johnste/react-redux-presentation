@@ -224,13 +224,19 @@ What problems is it solving?
 # React fundamentals - JSX
 
 - superset of JS
+- opt in
+- paves the way for ES6
 
-```jsxx
-<form className="sign-in-form">
-  <label htmlFor="email">Email</label>
-  <input type="email" id="email" />
-  <button onClick={ this.onHandleClick }>Click me!</button>
-</form>
+```jsx
+render() {
+  return (
+    <form className="sign-in-form">
+      <label htmlFor="email">Email</label>
+      <input type="email" id="email" />
+      <button onClick={ this.onHandleClick }>Click me!</button>
+    </form>
+  );
+}
 ```
 
 - `className`
