@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>React / Redux</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -41,6 +41,15 @@ Elevate 14 april 2016
 
 ---
 
+# whoareyou
+
+- JavaScript?
+- ES6?
+- Frontend?
+- React?
+
+---
+
 # Agenda
 
 1. Basic ES6 (ES2015)
@@ -58,6 +67,10 @@ Elevate 14 april 2016
   - errors in window
   - hmr
   - propType validation
+
+---
+
+# ES6
 
 ---
 
@@ -104,7 +117,7 @@ setInterval(() => {
 // Multiline strings
 var kind = "multiline"
 var docs = `
-  Hey, this is a 
+  Hey, this is a
   ${kind} string
 `
 ```
@@ -112,7 +125,7 @@ var docs = `
 ```js
 // Tagged templates TODO
 function tag(strings, ...values) {
-  
+
 }
 const a = 51
 const b = 15
@@ -195,6 +208,10 @@ import React, { PropTypes } from 'react';
 
 ---
 
+# React
+
+---
+
 # React fundamentals
 
 - *Ember* - full MVC
@@ -253,26 +270,6 @@ export default () => {
 # React fundamentals - Component
 
 ```js
-// pure component
-export default (props) => {
-    return <div>Hello { props.name }</div>;
-}
-```
-
-```js
-// stateless component
-export default React.createClass({
-  render() {
-    return <div>Hello { this.props.name }</div>;
-  }
-});
-```
-
----
-
-# React fundamentals - Component
-
-```js
 // stateful component
 export default React.createClass({
   getInitialState() {
@@ -298,11 +295,34 @@ export default class MyComponent extends React.Component {
 
 ---
 
+# React fundamentals - Lifecycle methods
+
+```js
+// stateful component
+export default React.createClass({
+  getInitialState() {},
+  getDefaultProps() {},
+
+  componentWillMount() {},
+  componentDidMount() {},
+  componentWillUnmount() {},
+
+  componentWillReceiveProps() {},
+
+  shouldComponentUpdate() {},
+  componentDidUpdate() {}
+
+  render() {}
+});
+```
+
+---
+
 # React fundamentals - Component
 
 ```js
-// connected component (redux)
-export const MyComponent = React.createClass({ // named export for testing
+// stateless component
+export default React.createClass({
   render() {
     return <div>Hello { this.props.name }</div>;
   }
@@ -310,11 +330,130 @@ export const MyComponent = React.createClass({ // named export for testing
 ```
 
 ```js
-export default connect(({ employees }) => {
-  return { name: employees['john'].name };
-})(MyComponent);
+// pure component
+export default (props) => {
+    return <div>Hello { props.name }</div>;
+}
 ```
 
+---
+
+# Redux
+
+---
+
+Flux What problem does it solve?
+[!flux](https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png)
+
+Redux - Predictable state container
+
+---
+
+# Action creators
+
+```js
+export function getCats(catType) {
+  return {
+    type: 'GET_CATS',
+    catType
+  };
+}
+```
+---
+
+# Reducers
+
+```js
+
+export function catReducer(state = {}, action) {
+  switch(action.type) {
+    case 'GET_CATS':
+      return {
+        ...state,
+        futureCatType: action.catType,
+        isLoadingCats: true
+      };
+    default:
+      return state;
+  }
+}
+
+---
+
+# Store
+
+```js
+import { createStore, combineReducers } from 'redux';
+import { catReducer } from '../reducers';
+
+const initialState = {};
+const rootReducer = combineReducers({
+  cats: catReducer
+});
+
+const store = createStore(
+  rootReducer,
+  initialState
+);
+
+export default store;
+
+```
+
+---
+
+# Redux - Hello Redux
+
+```js
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
+import store from './store';
+import Application from './application.jsx';
+
+render(
+  <Provider store={ store }>
+    <Application />
+  </Provider>,
+  document.getElementById('container')
+);
+```
+
+---
+
+# Redux - Connected components
+
+```js
+import { getCats } from './actions';
+
+const MyComponent = ({cats = [], dispatch}) => {
+
+  function onClick() {
+    dispatch(getCats());
+  }
+
+  return (
+    <div>
+      <ul>
+        { cats.map(cat => <li>{cat}</li>) }
+      </ul>
+
+      <button onClick={onClick}>Get some cats</button>
+    </div>
+  );
+};
+
+function mapStateToProps({ cats }) {
+  return {
+    cats: cats.allCats,
+    isYourFavoriteCat: cats.futureCatType === 'norsk bonnkatt'
+  };
+}
+
+export default connect(mapStateToProps)(MyComponent);
+
+```
 ---
 
 # Link list
