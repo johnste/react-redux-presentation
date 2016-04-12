@@ -240,6 +240,34 @@ render() {
 
 ---
 
+# React fundamentals - Vanilla JS
+
+```js
+"use strict";
+
+render() {
+  return (
+    React.createElement(
+      "form",
+      { className: "sign-in-form" },
+      React.createElement(
+        "label",
+        { htmlFor: "email" },
+        "Email"
+      ),
+      React.createElement("input", { type: "email", id: "email" }),
+      React.createElement(
+        "button",
+        { onClick: undefined.onHandleClick },
+        "Click me!"
+      )
+    );
+  );
+}
+```
+
+---
+
 # React fundamentals - Hello world
 
 ```jsx

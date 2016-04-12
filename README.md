@@ -28,7 +28,7 @@ Open [http://localhost:3000/](http://localhost:3000/)
 
 * ~~react jsx - add render function~~
 * exempel på attribut, true, false, string
-* alternativ till jsx
+* ~~alternativ till jsx~~
 * ~~jsx - babel - es6~~
 
 * change order of components. från mest text till minst text
