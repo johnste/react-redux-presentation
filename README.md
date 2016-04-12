@@ -17,11 +17,10 @@ Open [http://localhost:3000/](http://localhost:3000/)
 * ~~förenkla let/const exemplet~~
 * ~~förenkla template literals - flytta senare~~
 * ~~object literal shorthand~~
-  ~~- add computed property example~~
+* ~~add computed property example~~
 * ~~destruct -> example destruct arguments~~
 * ~~add rest spread operator~~
 * ~~default/rest - add example~~
-* add import * as - ex.
 * ~~add class example~~
 
 * elaborate on vdom + diffing
@@ -35,8 +34,8 @@ Open [http://localhost:3000/](http://localhost:3000/)
 * flytta connected comonent till senare (redux)
 * ~~lifecycle methods~~
 
-* Flux - bilden
-* Store hell! Spagettimonster!
+* ~~Flux - bilden~~
+* ~~Store hell! Spagettimonster!~~
 * Gömt state -> lokalt state
 * Globalt state => komponenterna är en representation
 * saker du inte förväntar dig är kvar efter en page refresh
