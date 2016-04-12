@@ -162,17 +162,29 @@ const docs = `Hey, this is a ${kind} string`
 
 ```js
 function sayHello(name) {
-  name = name || 'Jontus Doe';
+  name = typeof name !== 'undefined' || 'Jontus Doe';
   var rest = [].slice.call(arguments, 1);
-  return 'Hello ' + name;
+  return 'Hello ' + name + '. Rest: ' + rest.join(', ');
 }
 ```
 
 ```js
 function sayHello(name = 'Johntus Doe', ...rest) {
-  return `Hello ${name}`;
+  return `Hello ${name}. Rest: ${rest.join(', ')}`;
 }
 ```
+
+```js
+sayHello('Pontohn', 'red', 'blue') == 'Hello Pontohn. Rest: red, blue'
+```
+
+---
+
+# ES6 - classes
+
+```js
+
+
 
 ---
 
@@ -219,12 +231,34 @@ What problems is it solving?
 
 - superset of JS
 
-```jsxx
-<form className="sign-in-form">
-  <label htmlFor="email">Email</label>
-  <input type="email" id="email" />
-  <button onClick={ this.onHandleClick }>Click me!</button>
-</form>
+```jsx
+function () {
+  return (
+    <form className="sign-in-form">
+      <label htmlFor="email">Email</label>
+      <input type="email" id="email" />
+      <button onClick={ this.onHandleClick }>Click me!</button>
+    </form>
+  );
+}
+```
+
+```jsx
+React.createElement(
+  "form",
+  { className: "sign-in-form" },
+  React.createElement(
+    "label",
+    { htmlFor: "email" },
+    "Email"
+  ),
+  React.createElement("input", { type: "email", id: "email" }),
+  React.createElement(
+    "button",
+    { onClick: undefined.onHandleClick },
+    "Click me!"
+  )
+);
 ```
 
 - `className`
