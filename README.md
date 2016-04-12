@@ -18,25 +18,22 @@ Open [http://localhost:3000/](http://localhost:3000/)
 * ~~förenkla template literals - flytta senare~~
 * ~~object literal shorthand~~
   ~~- add computed property example~~
-* destruct -> example destruct arguments
-* add rest spread operator
-* default/rest - add example
+* ~~destruct -> example destruct arguments~~
+* ~~add rest spread operator~~
+* ~~default/rest - add example~~
 * add import * as - ex.
-* add class example
+* ~~add class example~~
 
 * elaborate on vdom + diffing
 
-* react jsx - add render function
+* ~~react jsx - add render function~~
 * exempel på attribut, true, false, string
-* alternativ till jsx
-* jsx - babel - es6
+* ~~alternativ till jsx~~
+* ~~jsx - babel - es6~~
 
 * change order of components. från mest text till minst text
 * flytta connected comonent till senare (redux)
-* lifecycle methods
- - getInitialState
- - componentDidMount
- - componentWillReceiveProps
+* ~~lifecycle methods~~
 
 * Flux - bilden
 * Store hell! Spagettimonster!

@@ -13,6 +13,9 @@
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
+      img {
+        width: 100%;
+      }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
     </style>
   </head>
@@ -230,9 +233,12 @@ What problems is it solving?
 # React fundamentals - JSX
 
 - superset of JS
+- opt in
+- paves the way for ES6
 
 ```jsx
-function () {
+
+render() {
   return (
     <form className="sign-in-form">
       <label htmlFor="email">Email</label>
@@ -265,6 +271,34 @@ React.createElement(
 - `htmlFor`
 - `events`
 - `{ js here }`
+
+---
+
+# React fundamentals - Vanilla JS
+
+```js
+"use strict";
+
+render() {
+  return (
+    React.createElement(
+      "form",
+      { className: "sign-in-form" },
+      React.createElement(
+        "label",
+        { htmlFor: "email" },
+        "Email"
+      ),
+      React.createElement("input", { type: "email", id: "email" }),
+      React.createElement(
+        "button",
+        { onClick: this.onHandleClick },
+        "Click me!"
+      )
+    );
+  );
+}
+```
 
 ---
 
@@ -367,7 +401,10 @@ export default (props) => {
 
 ---
 
-Flux What problem does it solve?
+# Redux
+
+What problem does it solve?
+
 ![flux](https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png)
 
 Redux - Predictable state container
