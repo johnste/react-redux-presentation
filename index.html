@@ -55,9 +55,6 @@ Elevate 14 april 2016
 1. Basic ES6 (ES2015)
 2. React fundamentals
   - View layer (vdom)
-  - JSX
-  - React Component
-  - React Component lifecycle
   - State and Props (+propTypes)
   - React Component lifecycle
 3. Redux
@@ -77,7 +74,7 @@ Elevate 14 april 2016
 # ES6 - let/const
 *proudly presented in block scope*
 
-```jsx
+```js
 for (let i = 0; i < 10; i++) {
   setTimeout(function() {
     console.log(i);
@@ -92,7 +89,7 @@ x = 6; // TypeError
 
 # ES6 - arrow function
 
-```jsx
+```js
 this.count = 0;
 var that = this;
 
@@ -101,7 +98,7 @@ setInterval(function() {
 }, 1000);
 ```
 
-```jsx
+```js
 this.count = 0;
 
 setInterval(() => {
@@ -113,7 +110,7 @@ setInterval(() => {
 
 # ES6 - Template literals
 
-```jsx
+```js
 // Multiline strings
 var kind = "multiline"
 var docs = `
@@ -122,7 +119,7 @@ var docs = `
 `
 ```
 
-```jsx
+```js
 // Tagged templates TODO
 function tag(strings, ...values) {
 
@@ -135,7 +132,7 @@ tag`${a} is not ${b}`
 
 # ES6 - object literals
 
-```jsx
+```js
 var url = 'http://...';
 var api = {
   url: url,
@@ -143,7 +140,7 @@ var api = {
 };
 ```
 
-```jsx
+```js
 const url = 'http://...';
 const api = {
   url,
@@ -155,13 +152,13 @@ const api = {
 
 # ES6 - destructuring
 
-```jsx
+```js
 var point = getPoint();
 var x = point.x;
 var y = point.y;
 ```
 
-```jsx
+```js
 const { x, y } = getPoint();
 ```
 
@@ -169,7 +166,7 @@ const { x, y } = getPoint();
 
 # ES6 - default/rest parameters
 
-```jsx
+```js
 function sayHello(name) {
   name = name || 'Jontus Doe';
   var rest = [].slice.call(arguments, 1);
@@ -177,7 +174,7 @@ function sayHello(name) {
 }
 ```
 
-```jsx
+```js
 function sayHello(name = 'Johntus Doe', ...rest) {
   return `Hello ${name}`;
 }
@@ -187,7 +184,7 @@ function sayHello(name = 'Johntus Doe', ...rest) {
 
 # ES6 - modules
 
-```jsx
+```js
 // exporting
 module.exports = function React() {};
 module.exports.PropTypes = {};
@@ -197,7 +194,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 ```
 
-```jsx
+```js
 // exporting
 export default function React() (};
 export const PropTypes = {};
