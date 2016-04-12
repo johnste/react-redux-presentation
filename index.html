@@ -292,16 +292,16 @@ export default class MyComponent extends React.Component {
 // stateful component
 export default React.createClass({
   getInitialState() {},
-  getDefaultProps() {},
 
   componentWillMount() {},
   componentDidMount() {},
-  componentWillUnmount() {},
 
   componentWillReceiveProps() {},
-
   shouldComponentUpdate() {},
-  componentDidUpdate() {}
+  componentWillUpdate() {},
+  componentDidUpdate() {},
+
+  componentWillUnmount() {},
 
   render() {}
 });
