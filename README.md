@@ -18,11 +18,11 @@ Open [http://localhost:3000/](http://localhost:3000/)
 * ~~förenkla template literals - flytta senare~~
 * ~~object literal shorthand~~
   ~~- add computed property example~~
-* destruct -> example destruct arguments
-* add rest spread operator
-* default/rest - add example
+* ~~destruct -> example destruct arguments~~
+* ~~add rest spread operator~~
+* ~~default/rest - add example~~
 * add import * as - ex.
-* add class example
+* ~~add class example~~
 
 * elaborate on vdom + diffing
 
