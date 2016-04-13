@@ -67,10 +67,21 @@ Elevate 14 april 2016
 
 # Agenda
 
+--
+count: false
 ### - Basic ES6 (ES2015)
+--
+count: false
 ### - React fundamentals
+--
+count: false
 ### - Redux
+--
+count: false
 ### - Example app
+--
+count: false
+### - AW 🍻
 
 ---
 
@@ -97,6 +108,7 @@ x = 6; // TypeError
 
 # ES6 - arrow function
 
+ES5
 ```javascript
 this.count = 0;
 var that = this;
@@ -106,6 +118,13 @@ setInterval(function() {
 }, 1000);
 ```
 
+???
+- Lexical `this`
+- Closest `this` applies
+
+--
+count: false
+ES6
 ```javascript
 this.count = 0;
 
@@ -117,7 +136,7 @@ setInterval(() => {
 ---
 
 # ES6 - object literals
-
+ES5
 ```javascript
 var url = 'http://...';
 var key = 'a key';
@@ -129,7 +148,9 @@ var api = {
 
 api[key] = 'a value';
 ```
-
+--
+count: false
+ES6
 ```javascript
 const url = 'http://...';
 const api = {
@@ -143,12 +164,15 @@ const api = {
 
 # ES6 - destructuring
 
+ES5
 ```javascript
 var point = getPoint();
 var x = point.x;
 var y = point.y;
 ```
-
+--
+count: false
+ES6
 ```javascript
 const { x, y } = getPoint();
 ```
@@ -159,32 +183,62 @@ const { x, y } = getPoint();
 # ES6 - Template literals
 
 ```javascript
-// Multiline strings
-const kind = "multiline"
-const docs = `Hey, this is a ${kind} string`
+const a = 1;
+const b = 3;
+const kindOf = "multiline";
+const message = `Hey, this is a ${kindOf} string.
+  ${a + b}.`;
+// Hey, this is a multiline string.
+// 3.
+```
+
+???
+- Multiline
+- Interpolation
+
+---
+
+# ES6 - default parameters
+ES5
+```javascript
+function sayHello(name) {
+  name = name || 'Jontus Doe';
+  return 'Hello ' + name;
+}
+```
+--
+count: false
+ES6
+```javascript
+function sayHello(name = 'Johntus Doe') {
+  return `Hello ${name}.`;
+}
+
+sayHello(); // 'Hello Johntus Doe.'
 ```
 
 ---
 
-
-# ES6 - default/rest parameters
-
+# ES6 - object rest/spread
+ES5
 ```javascript
-function sayHello(name) {
-  name = typeof name !== 'undefined' || 'Jontus Doe';
-  var rest = [].slice.call(arguments, 1);
-  return 'Hello ' + name + '. Rest: ' + rest.join(', ');
+function countArgs() {
+  return [].slice.call(arguments).length;
 }
-```
 
+var obj = { a: '1', b: '2' };
+var obj2 = Object.assign({}, obj, { c: '3' });
+```
+--
+count: false
+ES6
 ```javascript
-function sayHello(name = 'Johntus Doe', ...rest) {
-  return `Hello ${name}. Rest: ${rest.join(', ')}`;
+function countArgs(...args) {
+  return args.length;
 }
-```
 
-```javascript
-sayHello('Pontohn', 'red', 'blue') == 'Hello Pontohn. Rest: red, blue'
+const obj = { a: '1', b: '2' };
+const obj2 = { ...obj, c: '3' };
 ```
 
 ---
@@ -199,6 +253,11 @@ class Point {
   }
 }
 ```
+
+???
+- syntactic sugar
+- composition over inheritence
+
 
 ---
 
@@ -223,31 +282,42 @@ export const PropTypes = {};
 import React, { PropTypes } from 'react';
 ```
 
+???
+- Statically analyzed (for static checking, optimization, etc.).
+- Support for cyclic dependencies is better than CommonJS’s
+- Programmatic loader API: to configure how modules are loaded and to conditionally load modules
+- Tree shaking
+
 ---
 
 class: center, middle, inverse
 
 # React
-
+The V in MVC
 ---
 
-# React fundamentals
+# React
 
-- *Ember* - full MVC
-- *Angular* - everything and a kitchen sink
-- *React* - only view layer
+### Prior Art
+- ***Ember*** - full MVC
+- ***Angular*** - everything and a kitchen sink
 
 What problems is it solving?
 
 [DOM manipulation comparison](https://www.youtube.com/watch?v=z5e7kWSHWTg)
 
+???
+- DOM is slow
+- only view layer
+- Komponentbaserat
+
 ---
 
-# React fundamentals - JSX
+# React - JSX
 
 - superset of JS
 - opt in
-- paves the way for ES6
+- paves the way for ES6+
 
 ```javascript
 
@@ -262,6 +332,8 @@ render() {
 }
 ```
 
+???
+Att notera
 - `className`
 - `htmlFor`
 - `events`
@@ -269,11 +341,9 @@ render() {
 
 ---
 
-# React fundamentals - Vanilla JS
+# React - Vanilla JS
 
 ```javascript
-"use strict";
-
 render() {
   return (
     React.createElement(
@@ -297,10 +367,11 @@ render() {
 
 ---
 
-# React fundamentals - Hello world
+# React - Hello world
 
-```javascript
-import React from 'react'; // needed in transpilation
+```jsx
+// app.jsx
+import React from 'react';
 import { render } from 'react-dom';
 import HelloWorld from './helloWorld.jsx';
 
@@ -310,7 +381,7 @@ render(
 );
 ```
 
-```javascript
+```jsx
 // helloWorld.jsx
 import React from 'react';
 
@@ -319,12 +390,15 @@ export default () => {
 }
 ```
 
+???
+- `import React from...` pga `React.createElement`
+
 ---
 
-# React fundamentals - Component
+# React - Component
 
-```javascript
-// stateful component
+Stateful component
+```jsx
 export default React.createClass({
   getInitialState() {
     return { name: 'John' };
@@ -335,8 +409,13 @@ export default React.createClass({
 });
 ```
 
-```javascript
-// stateful component class
+???
+- access till lifecycle
+- internt state
+--
+count: false
+Stateful component class
+```jsx
 export default class MyComponent extends React.Component {
   constructor() {
     this.state = { name: 'John' };
@@ -348,18 +427,44 @@ export default class MyComponent extends React.Component {
 ```
 ---
 
-# React fundamentals - State vs Props
+# React - Component
+
+Stateless component
+```javascript
+export default React.createClass({
+  render() {
+    return <div>Hello { this.props.name }</div>;
+  }
+});
+```
+--
+count: false
+
+Pure component
+```javascript
+export default ({ name }) => {
+    return <div>Hello { name }</div>;
+}
+```
+😍😍😍
+
+???
+- pure är eftersträvansvärd!
+
+---
+
+# React - Component - State vs Props
 
 - Immutability
-- Stateless/Pure components
-- Present data
-- Always rerender!
+- Pure state -> DOM
+- Automatic rerender
 
 ### Always be using props!
-
+--
+count: false
 except...
 
-```javascript
+```jsx
 export default InputField = React.createClass({
   onChange(evt) {
     this.setState({ value: evt.target.value });
@@ -372,20 +477,48 @@ export default InputField = React.createClass({
 
 ---
 
-# React fundamentals - Lifecycle methods
+# React - Component - Controller view
 
 ```javascript
-// stateful component
+export default React.createClass({
+getInitialState() {
+  return { items: [], currentItemId: null };
+},
+  render() {
+    return (
+      <div>
+        <ItemsFilterControls onFilter={this.onFilter} />
+        <ItemsList
+          items={this.state.items}
+          currentItemId={this.state.currentItemId}
+          onSelect={this.onSelectItem} />
+      </div>
+    );
+  },
+  onFilter() {},
+  onSelectItem() {}
+});
+```
+
+???
+- collect data in one view
+- provide data manipulation callbacks
+---
+
+# React - Component - Lifecycle methods
+
+```javascript
 export default React.createClass({
   getInitialState() {},
+  getDefaultProps() {},
 
   componentWillMount() {},
   componentDidMount() {},
 
-  componentWillReceiveProps() {},
-  shouldComponentUpdate() {},
-  componentWillUpdate() {},
-  componentDidUpdate() {},
+  componentWillReceiveProps(nextProps) {},
+  shouldComponentUpdate(nextProps, nextState) {},
+  componentWillUpdate(nextProps, nextState) {},
+  componentDidUpdate(prevProps, prevState) {},
 
   componentWillUnmount() {},
 
@@ -393,37 +526,29 @@ export default React.createClass({
 });
 ```
 
+???
+- only stateful components
+- render method required
+- vilka är viktiga?
+
 ---
 
-# React fundamentals - Component
+class: center, middle, inverse
 
-```javascript
-// stateless component
-export default React.createClass({
-  render() {
-    return <div>Hello { this.props.name }</div>;
-  }
-});
-```
-
-```javascript
-// pure component
-export default (props) => {
-    return <div>Hello { props.name }</div>;
-}
-```
+# 🍱 + 🍣 + 🍺?
 
 ---
 
 class: center, middle, inverse
 
 # Redux
+The M in MVC
 
 ---
 
 # Redux
 
-Managing data, the M of MVC
+Can't not manage data
 - Backbone model
 - Flux
 
@@ -431,34 +556,50 @@ Managing data, the M of MVC
 
 # Redux - Flux to the resque!
 
-- Unidirectional data flow
+*Unidirectional data flow*
 
 ![flux](https://docs.google.com/drawings/d/1VGR2SCceyl22rUi92vqP1ttGcpBPmoBLGknCG7dMmL0/pub?w=959&h=357)
 
+???
+- en app dispatcher
+- data flödar åt ett håll
 ---
 
 # Redux - ~~Flux to the resque!~~
 
-- Store hell & waitFor or wtf.
+*Store hell & waitFor*
 
 ![flux](https://docs.google.com/drawings/d/1oNW3w6RdnLJna8wSE8T01moKMqD5XlQ024-Onukvs_g/pub?w=959&h=357)
 
+???
+- multiple stores
+- inter store dependancies
+- waitFor
+- utspritt state
+- addListener/removeListener
+- komponenten suger i sig state
 ---
 
 # Redux - Redux
 
-- Predictable state container
+*Predictable state container*
 
 ![redux](https://docs.google.com/drawings/d/1_1CtFfIH7zqfNSO3Cl2mI7iYa5zAKodiuKY2JGIZfE0/pub?w=959&h=357)
 
+???
+- reducers jobbar på delmängder av globalt state
+- state pushas till vyn
+- vyer kan plocka ut delmängd av globalt state
 ---
 
 # Redux - Redux
 
-- Scales well
+*Easily reason about your data*
 
 ![redux](https://docs.google.com/drawings/d/1zn2arct1NehY0r2N5x5lnZ00-UWHLv0YrUPPSXBap-4/pub?w=959&h=357)
 
+???
+- scales well
 ---
 
 # Redux - parts
@@ -471,26 +612,33 @@ Managing data, the M of MVC
 
 # Redux - Action creators
 
-Describe change intent
+*Describe mutation intent*
 
 ```javascript
+export GET_CATS = 'get some cats';
 export function getCats(catType) {
   return {
-    type: 'GET_CATS',
+    type: GET_CATS,
     catType
   };
 }
+```
+...in some other file
+```javascript
+store.dispatch(getCats('norsk bonnakatt'));
 ```
 ---
 
 # Redux - Reducers
 
-Mutation by pure function
+*pure function mutation*
 
 ```javascript
+import { GET_CATS } from './actions';
+
 export function catReducer(state = {}, action) {
   switch(action.type) {
-    case 'GET_CATS':
+    case GET_CATS:
       return {
         ...state,
         futureCatType: action.catType,
@@ -521,7 +669,11 @@ const store = createStore(
 );
 
 export default store;
+```
 
+```javascript
+store.dispatch()
+store.getState()
 ```
 
 ---
@@ -549,7 +701,7 @@ render(
 
 Deeply nested state
 
-```javascript
+```jsx
 <Application >
   <Header />
   <main>
@@ -572,7 +724,6 @@ passthrough or...?
 import { getCats } from './actions';
 
 const MyComponent = ({cats = [], dispatch}) => {
-
   function onClick() {
     dispatch(getCats());
   }
@@ -608,9 +759,17 @@ Demo
 
 ???
 
-- errors in window
-- hmr
-- propType validation
+- webpack
+- HMR
+- Compile errors in window
+- propType validation errors
+- CSS automatic update
+
+---
+
+class: center, middle, inverse
+
+# Questions?
 
 ---
 
@@ -636,7 +795,8 @@ Demo
         ratio: '16:9',
         navigation: { scroll: false },
         highlightLanguage: 'javascript',
-        highlightStyle: 'monokai'
+        highlightStyle: 'monokai',
+        highlightLines: true
       });
     </script>
   </body>
