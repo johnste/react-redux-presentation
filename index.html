@@ -8,7 +8,10 @@
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body { font-family: 'Droid Serif'; }
+      body {
+        font-family: 'Droid Serif';
+        background-color: #D7D8D2;
+      }
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
@@ -29,6 +32,10 @@
         color: rgb(249, 38, 114);
         text-decoration: none;
       }
+      textarea {
+        display: none;
+      }
+
     </style>
   </head>
   <body>
@@ -135,6 +142,40 @@ setInterval(() => {
 
 ---
 
+# ES6 - template literals
+
+```javascript
+// Multiline strings
+const kind = "templated"
+const docs = `Hey, this is a ${kind} string`
+```
+
+---
+
+
+# ES6 - default/rest parameters
+
+```javascript
+function sayHello(name) {
+  name = typeof name !== 'undefined' || 'Jontus Doe';
+  var rest = [].slice.call(arguments, 1);
+  return 'Hello ' + name + '. Rest: ' + rest.join(', ');
+}
+```
+
+```javascript
+function sayHello(name = 'Johntus Doe', ...rest) {
+  return `Hello ${name}. Rest: ${rest.join(', ')}`;
+}
+```
+
+```javascript
+> sayHello('Pontohn', 'red', 'blue')
+"Hello Pontohn. Rest: red, blue"
+```
+
+---
+
 # ES6 - object literals
 ES5
 ```javascript
@@ -146,6 +187,7 @@ var api = {
   putJSON: function () { ... },
 };
 
+// Have to assign key after
 api[key] = 'a value';
 ```
 --
@@ -159,7 +201,6 @@ const api = {
   [key]: 'a value'
 };
 ```
-
 ---
 
 # ES6 - destructuring
@@ -176,7 +217,6 @@ ES6
 ```javascript
 const { x, y } = getPoint();
 ```
-
 
 ---
 
@@ -287,6 +327,31 @@ import React, { PropTypes } from 'react';
 - Support for cyclic dependencies is better than CommonJS’s
 - Programmatic loader API: to configure how modules are loaded and to conditionally load modules
 - Tree shaking
+
+---
+# ESX - object spread operator (stage 2 proposal)
+
+```javascript
+var default = {
+  url: 'http://example.com',
+  active: false
+};
+
+var options = Object.assign({}, defaults, { active: true });
+
+options.url === 'http://example.com'
+options.active === true
+
+```
+
+```javascript
+const default = {
+  url: 'http://example.com',
+  active: false
+}
+
+const options = { ...defaults, active: true };
+```
 
 ---
 
@@ -509,29 +574,39 @@ getInitialState() {
 
 ```javascript
 export default React.createClass({
+
   getInitialState() {},
   getDefaultProps() {},
 
   componentWillMount() {},
   componentDidMount() {},
+  componentWillUnmount() {},
 
   componentWillReceiveProps(nextProps) {},
   shouldComponentUpdate(nextProps, nextState) {},
   componentWillUpdate(nextProps, nextState) {},
   componentDidUpdate(prevProps, prevState) {},
 
-  componentWillUnmount() {},
+  shouldComponentUpdate() {},
+  componentWillUpdate() {},
+  componentDidUpdate() {},
 
   render() {}
 });
+
 ```
 
 ???
+- initial state
+- mounting
+- component update
 - only stateful components
 - render method required
 - vilka är viktiga?
 
 ---
+
+# React - Stateless and Pure Components
 
 class: center, middle, inverse
 
@@ -602,7 +677,7 @@ Can't not manage data
 - scales well
 ---
 
-# Redux - parts
+# Redux - Parts
 
 ### - Action creators
 ### - Reducers
@@ -775,8 +850,8 @@ class: center, middle, inverse
 
 # Links
 
-- [these slides](http://johnste.github.io/react-redux-presentation)
-- [learn ES6](http://babeljs.io/docs/learn-es2015/)
+- [These slides](http://johnste.github.io/react-redux-presentation)
+- [Learn ES6](http://babeljs.io/docs/learn-es2015/)
 - [React + Webpack cookbook](http://survivejs.com/webpack/introduction/)
 - [Redux documentation](http://redux.js.org/docs/introduction/index.html)
 - [Getting started with redux video series](https://egghead.io/series/getting-started-with-redux)
@@ -787,6 +862,7 @@ class: center, middle, inverse
 ### React alternatives
 - [preact](https://github.com/developit/preact)
 - [cycle.js](http://cycle.js.org/)
+- [elm](http://elm-lang.org/)
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
