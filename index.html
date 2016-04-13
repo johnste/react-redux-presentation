@@ -17,12 +17,24 @@
         width: 100%;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1 {
+        color: #f3f3f3;
+      }
+      .inverse a {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
     <textarea id="source">
 
-class: center, middle
+class: center, middle, inverse
 
 # React + redux
 
@@ -59,11 +71,10 @@ Elevate 14 april 2016
 ### - React fundamentals
 ### - Redux
 ### - Example app
-  - errors in window
-  - hmr
-  - propType validation
 
 ---
+
+class: center, middle, inverse
 
 # ES6
 
@@ -72,7 +83,7 @@ Elevate 14 april 2016
 # ES6 - let/const
 *proudly presented in block scope*
 
-```js
+```javascript
 if (true) {
   let a = 5;
 }
@@ -86,7 +97,7 @@ x = 6; // TypeError
 
 # ES6 - arrow function
 
-```js
+```javascript
 this.count = 0;
 var that = this;
 
@@ -95,7 +106,7 @@ setInterval(function() {
 }, 1000);
 ```
 
-```js
+```javascript
 this.count = 0;
 
 setInterval(() => {
@@ -107,7 +118,7 @@ setInterval(() => {
 
 # ES6 - object literals
 
-```js
+```javascript
 var url = 'http://...';
 var key = 'a key';
 
@@ -119,7 +130,7 @@ var api = {
 api[key] = 'a value';
 ```
 
-```js
+```javascript
 const url = 'http://...';
 const api = {
   url,
@@ -132,13 +143,13 @@ const api = {
 
 # ES6 - destructuring
 
-```js
+```javascript
 var point = getPoint();
 var x = point.x;
 var y = point.y;
 ```
 
-```js
+```javascript
 const { x, y } = getPoint();
 ```
 
@@ -147,7 +158,7 @@ const { x, y } = getPoint();
 
 # ES6 - Template literals
 
-```js
+```javascript
 // Multiline strings
 const kind = "multiline"
 const docs = `Hey, this is a ${kind} string`
@@ -158,7 +169,7 @@ const docs = `Hey, this is a ${kind} string`
 
 # ES6 - default/rest parameters
 
-```js
+```javascript
 function sayHello(name) {
   name = typeof name !== 'undefined' || 'Jontus Doe';
   var rest = [].slice.call(arguments, 1);
@@ -166,13 +177,13 @@ function sayHello(name) {
 }
 ```
 
-```js
+```javascript
 function sayHello(name = 'Johntus Doe', ...rest) {
   return `Hello ${name}. Rest: ${rest.join(', ')}`;
 }
 ```
 
-```js
+```javascript
 sayHello('Pontohn', 'red', 'blue') == 'Hello Pontohn. Rest: red, blue'
 ```
 
@@ -180,15 +191,20 @@ sayHello('Pontohn', 'red', 'blue') == 'Hello Pontohn. Rest: red, blue'
 
 # ES6 - classes
 
-```js
-
-
+```javascript
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+```
 
 ---
 
 # ES6 - modules
 
-```js
+```javascript
 // exporting
 module.exports = function React() {};
 module.exports.PropTypes = {};
@@ -198,7 +214,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 ```
 
-```js
+```javascript
 // exporting
 export default function React() (};
 export const PropTypes = {};
@@ -208,6 +224,8 @@ import React, { PropTypes } from 'react';
 ```
 
 ---
+
+class: center, middle, inverse
 
 # React
 
@@ -231,7 +249,7 @@ What problems is it solving?
 - opt in
 - paves the way for ES6
 
-```jsx
+```javascript
 
 render() {
   return (
@@ -253,7 +271,7 @@ render() {
 
 # React fundamentals - Vanilla JS
 
-```js
+```javascript
 "use strict";
 
 render() {
@@ -281,7 +299,7 @@ render() {
 
 # React fundamentals - Hello world
 
-```jsx
+```javascript
 import React from 'react'; // needed in transpilation
 import { render } from 'react-dom';
 import HelloWorld from './helloWorld.jsx';
@@ -292,7 +310,7 @@ render(
 );
 ```
 
-```jsx
+```javascript
 // helloWorld.jsx
 import React from 'react';
 
@@ -305,7 +323,7 @@ export default () => {
 
 # React fundamentals - Component
 
-```jsx
+```javascript
 // stateful component
 export default React.createClass({
   getInitialState() {
@@ -317,7 +335,7 @@ export default React.createClass({
 });
 ```
 
-```jsx
+```javascript
 // stateful component class
 export default class MyComponent extends React.Component {
   constructor() {
@@ -341,7 +359,7 @@ export default class MyComponent extends React.Component {
 
 except...
 
-```jsx
+```javascript
 export default InputField = React.createClass({
   onChange(evt) {
     this.setState({ value: evt.target.value });
@@ -356,7 +374,7 @@ export default InputField = React.createClass({
 
 # React fundamentals - Lifecycle methods
 
-```jsx
+```javascript
 // stateful component
 export default React.createClass({
   getInitialState() {},
@@ -379,7 +397,7 @@ export default React.createClass({
 
 # React fundamentals - Component
 
-```jsx
+```javascript
 // stateless component
 export default React.createClass({
   render() {
@@ -388,7 +406,7 @@ export default React.createClass({
 });
 ```
 
-```jsx
+```javascript
 // pure component
 export default (props) => {
     return <div>Hello { props.name }</div>;
@@ -396,6 +414,8 @@ export default (props) => {
 ```
 
 ---
+
+class: center, middle, inverse
 
 # Redux
 
@@ -453,7 +473,7 @@ Managing data, the M of MVC
 
 Describe change intent
 
-```js
+```javascript
 export function getCats(catType) {
   return {
     type: 'GET_CATS',
@@ -467,7 +487,7 @@ export function getCats(catType) {
 
 Mutation by pure function
 
-```js
+```javascript
 export function catReducer(state = {}, action) {
   switch(action.type) {
     case 'GET_CATS':
@@ -486,7 +506,7 @@ export function catReducer(state = {}, action) {
 
 # Redux - Store
 
-```js
+```javascript
 import { createStore, combineReducers } from 'redux';
 import { catReducer } from '../reducers';
 
@@ -508,7 +528,7 @@ export default store;
 
 # Redux - Hello Redux
 
-```jsx
+```javascript
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -529,7 +549,7 @@ render(
 
 Deeply nested state
 
-```jsx
+```javascript
 <Application >
   <Header />
   <main>
@@ -548,7 +568,7 @@ passthrough or...?
 
 # Redux - Connected components
 
-```jsx
+```javascript
 import { getCats } from './actions';
 
 const MyComponent = ({cats = [], dispatch}) => {
@@ -580,9 +600,23 @@ export default connect(mapStateToProps)(MyComponent);
 ```
 ---
 
-# Link list
+class: center, middle, inverse
 
-- [slides](http://johnste.github.io/react-redux-presentation)
+# Example app
+
+Demo
+
+???
+
+- errors in window
+- hmr
+- propType validation
+
+---
+
+# Links
+
+- [these slides](http://johnste.github.io/react-redux-presentation)
 - [learn ES6](http://babeljs.io/docs/learn-es2015/)
 - [React + Webpack cookbook](http://survivejs.com/webpack/introduction/)
 - [Redux documentation](http://redux.js.org/docs/introduction/index.html)
@@ -591,11 +625,19 @@ export default connect(mapStateToProps)(MyComponent);
 ### Further reading
 - [pokedex](http://www.pocketjavascript.com/blog/2015/11/23/introducing-pokedex-org)
 
+### React alternatives
+- [preact](https://github.com/developit/preact)
+- [cycle.js](http://cycle.js.org/)
+
     </textarea>
-    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
-    </script>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
     <script>
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        ratio: '16:9',
+        navigation: { scroll: false },
+        highlightLanguage: 'javascript',
+        highlightStyle: 'monokai'
+      });
     </script>
   </body>
 </html>
