@@ -8,7 +8,10 @@
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body { font-family: 'Droid Serif'; }
+      body {
+        font-family: 'Droid Serif';
+        background-color: #D7D8D2;
+      }
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
@@ -29,6 +32,10 @@
         color: rgb(249, 38, 114);
         text-decoration: none;
       }
+      textarea {
+        display: none;
+      }
+
     </style>
   </head>
   <body>
@@ -116,51 +123,11 @@ setInterval(() => {
 
 ---
 
-# ES6 - object literals
-
-```javascript
-var url = 'http://...';
-var key = 'a key';
-
-var api = {
-  url: url,
-  putJSON: function () { ... },
-};
-
-api[key] = 'a value';
-```
-
-```javascript
-const url = 'http://...';
-const api = {
-  url,
-  putJson() { ... },
-  [key]: 'a value'
-};
-```
-
----
-
-# ES6 - destructuring
-
-```javascript
-var point = getPoint();
-var x = point.x;
-var y = point.y;
-```
-
-```javascript
-const { x, y } = getPoint();
-```
-
-
----
-
-# ES6 - Template literals
+# ES6 - template literals
 
 ```javascript
 // Multiline strings
-const kind = "multiline"
+const kind = "templated"
 const docs = `Hey, this is a ${kind} string`
 ```
 
@@ -184,8 +151,49 @@ function sayHello(name = 'Johntus Doe', ...rest) {
 ```
 
 ```javascript
-sayHello('Pontohn', 'red', 'blue') == 'Hello Pontohn. Rest: red, blue'
+> sayHello('Pontohn', 'red', 'blue')
+"Hello Pontohn. Rest: red, blue"
 ```
+
+---
+
+# ES6 - object literals
+
+```javascript
+var url = 'http://...';
+var key = 'a key';
+
+var api = {
+  url: url,
+  putJSON: function () { ... },
+};
+
+// Have to assign key after
+api[key] = 'a value';
+```
+
+```javascript
+const url = 'http://...';
+const api = {
+  url,
+  putJson() { ... },
+  [key]: 'a value'
+};
+```
+---
+
+# ES6 - destructuring
+
+```javascript
+var point = getPoint();
+var x = point.x;
+var y = point.y;
+```
+
+```javascript
+const { x, y } = getPoint();
+```
+
 
 ---
 
@@ -221,6 +229,31 @@ export const PropTypes = {};
 
 // importing
 import React, { PropTypes } from 'react';
+```
+
+---
+# ESX - object spread operator (stage 2 proposal)
+
+```javascript
+var default = {
+  url: 'http://example.com',
+  active: false
+};
+
+var options = Object.assign({}, defaults, { active: true });
+
+options.url === 'http://example.com'
+options.active === true
+
+```
+
+```javascript
+const default = {
+  url: 'http://example.com',
+  active: false
+}
+
+const options = { ...defaults, active: true };
 ```
 
 ---
@@ -375,27 +408,33 @@ export default InputField = React.createClass({
 # React fundamentals - Lifecycle methods
 
 ```javascript
-// stateful component
+
 export default React.createClass({
+  // Set initial state
   getInitialState() {},
 
+  // Mounting
   componentWillMount() {},
   componentDidMount() {},
+  componentWillUnmount() {},
 
+  // A property has changed?
   componentWillReceiveProps() {},
+
+  // Component update
   shouldComponentUpdate() {},
   componentWillUpdate() {},
   componentDidUpdate() {},
 
-  componentWillUnmount() {},
-
+  // Render!
   render() {}
 });
+
 ```
 
 ---
 
-# React fundamentals - Component
+# React fundamentals - Stateless and Pure Components
 
 ```javascript
 // stateless component
@@ -461,7 +500,7 @@ Managing data, the M of MVC
 
 ---
 
-# Redux - parts
+# Redux - Parts
 
 ### - Action creators
 ### - Reducers
@@ -616,8 +655,8 @@ Demo
 
 # Links
 
-- [these slides](http://johnste.github.io/react-redux-presentation)
-- [learn ES6](http://babeljs.io/docs/learn-es2015/)
+- [These slides](http://johnste.github.io/react-redux-presentation)
+- [Learn ES6](http://babeljs.io/docs/learn-es2015/)
 - [React + Webpack cookbook](http://survivejs.com/webpack/introduction/)
 - [Redux documentation](http://redux.js.org/docs/introduction/index.html)
 - [Getting started with redux video series](https://egghead.io/series/getting-started-with-redux)
@@ -628,6 +667,7 @@ Demo
 ### React alternatives
 - [preact](https://github.com/developit/preact)
 - [cycle.js](http://cycle.js.org/)
+- [elm](http://elm-lang.org/)
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
