@@ -30,8 +30,8 @@ Open [http://localhost:3000/](http://localhost:3000/)
 * ~~alternativ till jsx~~
 * ~~jsx - babel - es6~~
 
-* change order of components. från mest text till minst text
-* flytta connected comonent till senare (redux)
+* ~~change order of components. från mest text till minst text~~
+* ~~flytta connected comonent till senare (redux)~~
 * ~~lifecycle methods~~
 
 * ~~Flux - bilden~~
