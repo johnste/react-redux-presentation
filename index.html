@@ -145,33 +145,42 @@ setInterval(() => {
 # ES6 - template literals
 
 ```javascript
-// Multiline strings
-const kind = "templated"
-const docs = `Hey, this is a ${kind} string`
+const a = 1;
+const b = 3;
+const kindOf = "multiline";
+const message = `Hey, this is a ${kindOf} string.
+  ${a + b}.`;
+// Hey, this is a multiline string.
+// 3.
 ```
+
+???
+- Multiline
+- Interpolation
 
 ---
 
+# ES6 - default parameters
 
-# ES6 - default/rest parameters
-
+ES5
 ```javascript
 function sayHello(name) {
-  name = typeof name !== 'undefined' || 'Jontus Doe';
-  var rest = [].slice.call(arguments, 1);
-  return 'Hello ' + name + '. Rest: ' + rest.join(', ');
+  name = name || 'Jontus Doe';
+  return 'Hello ' + name + '.';
+}
+```
+
+--
+count: false
+ES6
+```javascript
+function sayHello(name = 'Johntus Doe') {
+  return `Hello ${name}.`;
 }
 ```
 
 ```javascript
-function sayHello(name = 'Johntus Doe', ...rest) {
-  return `Hello ${name}. Rest: ${rest.join(', ')}`;
-}
-```
-
-```javascript
-> sayHello('Pontohn', 'red', 'blue')
-"Hello Pontohn. Rest: red, blue"
+> sayHello() // "Hello Johntus Doe.
 ```
 
 ---
@@ -217,24 +226,6 @@ ES6
 ```javascript
 const { x, y } = getPoint();
 ```
-
----
-
-# ES6 - Template literals
-
-```javascript
-const a = 1;
-const b = 3;
-const kindOf = "multiline";
-const message = `Hey, this is a ${kindOf} string.
-  ${a + b}.`;
-// Hey, this is a multiline string.
-// 3.
-```
-
-???
-- Multiline
-- Interpolation
 
 ---
 
@@ -303,6 +294,7 @@ class Point {
 
 # ES6 - modules
 
+ES5
 ```javascript
 // exporting
 module.exports = function React() {};
@@ -312,7 +304,9 @@ module.exports.PropTypes = {};
 var React = require('react');
 var PropTypes = React.PropTypes;
 ```
-
+--
+count: false
+ES6
 ```javascript
 // exporting
 export default function React() (};
@@ -327,31 +321,6 @@ import React, { PropTypes } from 'react';
 - Support for cyclic dependencies is better than CommonJS’s
 - Programmatic loader API: to configure how modules are loaded and to conditionally load modules
 - Tree shaking
-
----
-# ESX - object spread operator (stage 2 proposal)
-
-```javascript
-var default = {
-  url: 'http://example.com',
-  active: false
-};
-
-var options = Object.assign({}, defaults, { active: true });
-
-options.url === 'http://example.com'
-options.active === true
-
-```
-
-```javascript
-const default = {
-  url: 'http://example.com',
-  active: false
-}
-
-const options = { ...defaults, active: true };
-```
 
 ---
 
@@ -606,11 +575,9 @@ export default React.createClass({
 
 ---
 
-# React - Stateless and Pure Components
-
 class: center, middle, inverse
 
-# 🍱 + 🍣 + 🍺?
+  # 🍱 + 🍣 + 🍺?
 
 ---
 
