@@ -31,8 +31,11 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel'],
         exclude: /node_modules/
+      },
+      {
+        test: /\.styl$/,
+        loaders: ['style', 'css', 'stylus']
       }
     ]
   }
 };
-

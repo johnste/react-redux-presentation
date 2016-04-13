@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { count, increment, decrement } from '../actions/counterActions';
+import * as counterActions from '../actions/counterActions';
 import Counter from '../components/Counter.jsx';
 import Button from '../components/Button.jsx';
 
 export const App = React.createClass({
+  propTypes: {
+    currentCount: PropTypes.number.isRequired,
+    delta: PropTypes.number.isRequired
+  },
+
   componentDidMount() {
-      this.interval = setInterval(() => {
-        this.props.dispatch(count());
-      }, 1000);
+      this.interval = setInterval(this.props.count, 1000);
   },
 
   componentWillUnmount() {
@@ -17,13 +20,13 @@ export const App = React.createClass({
   },
 
   render() {
-    const { dispatch } = this.props;
+    const { currentCount, delta, decrement, increment } = this.props;
     return (
       <div>
         <h1>Counter</h1>
-        <Counter { ...this.props }/>
-        <Button onClick={ dispatch.bind(this, decrement()) }>-</Button>
-        <Button onClick={ dispatch.bind(this, increment()) }>+</Button>
+        <Counter count={ currentCount } delta={ delta } />
+        <Button onClick={ decrement }>-</Button>
+        <Button onClick={ increment }>+</Button>
       </div>
     );
   }
@@ -31,9 +34,9 @@ export const App = React.createClass({
 
 function mapStateToProps({ counter }) {
   return {
-    count: counter.count,
+    currentCount: counter.count,
     delta: counter.delta
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, counterActions)(App);

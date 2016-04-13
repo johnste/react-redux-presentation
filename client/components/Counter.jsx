@@ -1,7 +1,12 @@
 import React, { PropTypes } from 'react';
 
 const Counter = ({ count, delta }) => {
-  return <div>count: { count }, delta: { delta }</div>;
+  return (
+    <div>
+      <p>count: { count }</p>
+      <p>delta: { delta }</p>
+    </div>
+  );
 };
 
 Counter.propTypes = {

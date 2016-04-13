@@ -8,15 +8,26 @@ export default function async(state = {
 
 	switch(action.type) {
 		case ASYNC_REQUEST:
-			return { ...state, isFetching: true };
+			return {
+        ...state,
+        data: undefined,
+        isFetching: true
+      };
 
 		case ASYNC_FAILED:
-			return { ...state, isFetching: false,
-        isError: true};
+			return {
+        ...state,
+        isFetching: false,
+        isError: true
+      };
 
 		case ASYNC_RECEIVE:
-			return { ...state, isFetching: false,
-        isError: false, data: action.data};
+			return {
+        ...state,
+        isFetching: false,
+        isError: false,
+        data: action.data
+      };
 
     default:
       return state;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router';
 
-import Counter from './Counter.jsx'
-import Async from './Async.jsx'
-import App from './App.jsx'
+import Counter from './Counter.jsx';
+import Async from './Async.jsx';
+import App from './App.jsx';
 
-const NoMatch = () => <span>No such route</span>
+const NoMatch = () => <span>No such route</span>;
 
 export default function() {
   return (

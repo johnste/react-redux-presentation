@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
 
 const Button = ({ onClick, children }) => {
-  return <button onClick={ onClick }>{ 'knapp' }{ children }</button>;
+  return (
+    <button className="button" onClick={ onClick }>
+      { children }
+    </button>
+  );
 };
 
 Button.propTypes = {

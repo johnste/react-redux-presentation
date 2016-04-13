@@ -25,12 +25,11 @@ export function getNewData() {
   return dispatch => {
     dispatch(asyncRequest());
 
-    fetch('http://yesno.wtf/api/')
-
-      .then(response => response.json())
-
-      .then(json => dispatch(asyncReceived(json)))
-
-      .catch(() => dispatch(asyncFailed()))
+    setTimeout(() => {
+      fetch('http://yesno.wtf/api/')
+        .then(response => response.json())
+        .then(json => dispatch(asyncReceived(json)))
+        .catch(() => dispatch(asyncFailed()));
+    }, 500);
   };
 }

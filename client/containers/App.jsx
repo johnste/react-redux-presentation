@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default function App({children}) {
 	return (
-    <div>
+    <div className="app">
   		<ul>
   			<li><Link to={'/counter'}>Counter example</Link></li>
   			<li><Link to={'/async'}>Async example</Link></li>
@@ -12,5 +12,5 @@ export default function App({children}) {
         {children}
       </div>
     </div>
-	)
+	);
 }

@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+import Button from './Button.jsx';
 
 function YesOrNo({ getNewData, data }) {
 	const { data: response, isFetching, isError } = data;
 
   return (
   	<div>
-      <button onClick={ getNewData }>Get a new response!</button>
+      <Button onClick={ getNewData }>Get a new response!</Button>
       <br/>
   		<h2>Yes or No</h2>
       { response && <img src={response.image} width="350" /> }
