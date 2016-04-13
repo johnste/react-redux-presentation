@@ -9,6 +9,7 @@ function YesOrNo({ getNewData, data }) {
       <Button onClick={ getNewData }>Get a new response!</Button>
       <br/>
   		<h2>Yes or No</h2>
+      { response && <h3>{response.answer}</h3> }
       { response && <img src={response.image} width="350" /> }
       { isFetching && <strong>Loading</strong> }
       { isError && <strong>Something went wrong</strong> }
