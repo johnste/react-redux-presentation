@@ -229,27 +229,6 @@ const { x, y } = getPoint();
 
 ---
 
-# ES6 - default parameters
-ES5
-```javascript
-function sayHello(name) {
-  name = name || 'Jontus Doe';
-  return 'Hello ' + name;
-}
-```
---
-count: false
-ES6
-```javascript
-function sayHello(name = 'Johntus Doe') {
-  return `Hello ${name}.`;
-}
-
-sayHello(); // 'Hello Johntus Doe.'
-```
-
----
-
 # ES6 - object rest/spread
 ES5
 ```javascript
@@ -262,7 +241,7 @@ var obj2 = Object.assign({}, obj, { c: '3' });
 ```
 --
 count: false
-ES6
+ES?
 ```javascript
 function countArgs(...args) {
   return args.length;
@@ -309,7 +288,7 @@ count: false
 ES6
 ```javascript
 // exporting
-export default function React() (};
+export default function React() {};
 export const PropTypes = {};
 
 // importing
