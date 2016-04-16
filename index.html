@@ -79,13 +79,13 @@ count: false
 ### - Basic ES6 (ES2015)
 --
 count: false
-### - React fundamentals
+### - React Fundamentals
 --
 count: false
 ### - Redux
 --
 count: false
-### - Example app
+### - Example App
 --
 count: false
 ### - AW 🍻
@@ -113,7 +113,7 @@ x = 6; // TypeError
 
 ---
 
-# ES6 - arrow function
+# ES6 - Arrow Functions
 
 ES5
 ```javascript
@@ -142,7 +142,7 @@ setInterval(() => {
 
 ---
 
-# ES6 - template literals
+# ES6 - Template Literals
 
 ```javascript
 const a = 1;
@@ -160,7 +160,7 @@ const message = `Hey, this is a ${kindOf} string.
 
 ---
 
-# ES6 - default parameters
+# ES6 - Default Parameters
 
 ES5
 ```javascript
@@ -185,7 +185,7 @@ function sayHello(name = 'Johntus Doe') {
 
 ---
 
-# ES6 - object literals
+# ES6 - Object Literal Shorthand & Computed Properties
 ES5
 ```javascript
 var url = 'http://...';
@@ -212,7 +212,7 @@ const api = {
 ```
 ---
 
-# ES6 - destructuring
+# ES6 - Destructuring
 
 ES5
 ```javascript
@@ -229,11 +229,12 @@ const { x, y } = getPoint();
 
 ---
 
-# ES6 - object rest/spread
+# ES6 - Object Rest/Spread
 ES5
 ```javascript
-function countArgs() {
-  return [].slice.call(arguments).length;
+function sum() {
+  return [].slice.call(arguments)
+    .reduce((sum, curr) => sum + curr);
 }
 
 var obj = { a: '1', b: '2' };
@@ -241,10 +242,10 @@ var obj2 = Object.assign({}, obj, { c: '3' });
 ```
 --
 count: false
-ES?
+ES6
 ```javascript
 function countArgs(...args) {
-  return args.length;
+  return args.reduce((sum, curr) => sum + curr);
 }
 
 const obj = { a: '1', b: '2' };
@@ -253,7 +254,7 @@ const obj2 = { ...obj, c: '3' };
 
 ---
 
-# ES6 - classes
+# ES6 - Classes
 
 ```javascript
 class Point {
@@ -271,25 +272,13 @@ class Point {
 
 ---
 
-# ES6 - modules
+# ES6 - Modules
 
-ES5
-```javascript
-// exporting
-module.exports = function React() {};
-module.exports.PropTypes = {};
-
-// importing
-var React = require('react');
-var PropTypes = React.PropTypes;
-```
---
-count: false
 ES6
 ```javascript
 // exporting
-export default function React() {};
 export const PropTypes = {};
+export default function React() {};
 
 // importing
 import React, { PropTypes } from 'react';
